@@ -5,10 +5,11 @@
     <p><strong>期間:  </strong>{{ author.date_of_birth }}~{{ author.date_of_death }}</p>
   <div style="margin-left:20px;margin-top:20px">
     <h4>書籍</h4>
-
+{#   這邊會發現author.book_set.all 他會取得該作者擁有所有書本物件 #}
+{#   而剛好關鍵就在於book是Book物件，所以透過物件的方式可以解決這個問題   #}
     {% for book in author.book_set.all %}
-        <h3><strong><a href="">{{ book }}</a></strong></h3>
-{#        <p>{{  }}</p>#}
+        <h3><strong><a href="">{{ book.title }}</a></strong></h3>
+        <p>{{ book.summary }}</p>
     {% endfor %}
   </div>
 {% endblock %}
