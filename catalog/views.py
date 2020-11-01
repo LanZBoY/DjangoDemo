@@ -17,11 +17,14 @@ def index(request):
     # 但根據軟體工程物件導向設計原則 不建議省略
     num_authors = Author.objects.count()
     # 將要寫入html的
+    num_visits = request.session.get('num_visits', 0);
+    request.session['num_visits'] = num_visits + 1;
     context = {
         'num_books': num_books,
         'num_instances': num_instances,
         'num_instances_available': num_instances_available,
-        'num_authors': num_authors
+        'num_authors': num_authors,
+        'num_visits': num_visits
     }
     # 利用 render() 來渲染html 以及將context內容傳到html模板中
     return render(request, 'index.html', context=context)
