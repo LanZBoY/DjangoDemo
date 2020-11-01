@@ -17,6 +17,8 @@ def index(request):
     # 但根據軟體工程物件導向設計原則 不建議省略
     num_authors = Author.objects.count()
     # 將要寫入html的
+    # session 機制說明，這個session主要存在伺服器中，會根據瀏覽器的使用者資訊做不同的計算
+    # 在資料結溝中他主要是key,value的結構
     num_visits = request.session.get('num_visits', 0);
     request.session['num_visits'] = num_visits + 1;
     context = {
