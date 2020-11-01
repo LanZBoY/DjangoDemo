@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>查詢書本</title>{% endblock %}
+
+{% block content %}
+    <h1>書本列表</h1>
+    <p>這裡是書本列表</p>
+    <h2>動態內容</h2>
+    <p>目前圖書館有這幾本書:</p>
+    <ul>
+        <strong>書本列表:</strong>
+        {% for i in books %}
+            <li> {{ i.title }} {{ i.author }} {{ i.isbn }} {{ i.language }}</li>{% endfor %}
+    </ul>
+{% endblock %}

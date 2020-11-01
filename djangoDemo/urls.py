@@ -14,8 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-
+from django.urls import path, include
+from django.views.generic import RedirectView
+from django.conf import settings
+from django.conf.urls.static import static
+# 第二行這是定義基本path的地方
+# 第三行這裡可以定義重新導向 設定導向至catalog.urls的檔案
+# static function在開發階段可以傳送CSS，JavaScript檔案
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('catalog/', include('catalog.urls')),
+    path('', RedirectView.as_view(url='catalog/')),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

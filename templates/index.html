@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>首頁</title>{% endblock %}
+
+{% block content %}
+  <h1>圖書館範例網站</h1>
+  <p>歡迎來到圖書館,這個網站是被<em>問題兒童</em>所建立的!</p>
+  <h2>動態內容</h2>
+  <p>目前圖書館有以下幾筆資訊:</p>
+  <ul>
+    <li><strong>書本:</strong> {{ num_books }}</li>
+    <li><strong>複本:</strong> {{ num_instances }}</li>
+    <li><strong>可借的複本:</strong> {{ num_instances_available }}</li>
+    <li><strong>作者:</strong> {{ num_authors }}</li>
+  </ul>
+{% endblock %}
